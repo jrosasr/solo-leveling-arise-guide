@@ -129,7 +129,7 @@
   cursor: pointer;
   margin: 20px 0;
   overflow: hidden;
-  filter: grayscale(50%);
+  filter: grayscale(75%);
 
 }
 
