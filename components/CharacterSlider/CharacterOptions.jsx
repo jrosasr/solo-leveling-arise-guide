@@ -16,11 +16,16 @@ export default function CharacterSlider() {
   const [indexOption, setindexOption] = useState(0);
 
   useEffect(() => {
+    const infoSlider = document.querySelectorAll(".info-slider");
     const imgSlider = document.querySelectorAll(".img-slider");
     const items = document.querySelectorAll(".item");
 
     imgSlider.forEach((slide) => {
       slide.style.transform = `translateX(${indexOption * -100}%)`;
+    });
+
+    infoSlider.forEach((slide) => {
+      slide.style.transform = `translateY(${indexOption * -100}%)`;
     });
 
     document.querySelector(".item.active")?.classList.remove("active");
