@@ -48,7 +48,7 @@ export default function CharacterSlider() {
       <Slider {...SETTINGS}>
       {CHARACTERS.map((character, i) => (
         <div className="" key={i} style={{ width: "100px", heigth: "100px" }}>
-          <img className={i == indexOption ? "grayscale-0" : "grayscale"} src={`/miniatures/${character.slug}`} alt={character.name} onClick={() => handleOptionClick(i)} />
+          <img className={i == indexOption ? "grayscale-0" : "grayscale-[50%]"} src={`/miniatures/${character.slug}`} alt={character.name} onClick={() => handleOptionClick(i)} />
         </div>
       ))}
     </Slider>
