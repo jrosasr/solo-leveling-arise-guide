@@ -28,8 +28,8 @@
   left: 5%;
   top: 50%;
   transform: translateY(-50%);
-  width: 450px;
-  height: 300px;
+  width: 100vw;
+  height: 500px;
   display: flex;
   align-items: center;
   z-index: 1;
