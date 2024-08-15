@@ -85,7 +85,7 @@ export default function CharacterSlider() {
             >
               <img
                 className={i == indexOption ? "grayscale-0" : "grayscale-[50%]"}
-                src={`/miniatures/${character.slug}`}
+                src={`/miniatures/${character.miniature}`}
                 alt={character.name}
                 onClick={() => handleOptionClick(i)}
               />

@@ -11,7 +11,7 @@ export default function CharacterSlider() {
           <div className="bg"></div>
           <CharacterMainImage
             className="-mr-10"
-            slugImage={character.slug}
+            slugImage={character.miniature}
             index={i}
           />
           <CharacterDescription
