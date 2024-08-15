@@ -12,7 +12,6 @@ const SETTINGS = {
   slidesToScroll: 5,
 };
 export default function CharacterSlider() {
-
   const [indexOption, setindexOption] = useState(0);
 
   useEffect(() => {
@@ -30,33 +29,44 @@ export default function CharacterSlider() {
 
     document.querySelector(".item.active")?.classList.remove("active");
     items[indexOption].classList?.add("active");
-    
+
     // return () => {
     //   document.querySelector(".item.active")?.classList?.remove("active");
     //   items[0]?.classList.add("active");
     // };
-  }, [indexOption])
+  }, [indexOption]);
 
   function handleOptionClick(index) {
     setindexOption(index);
   }
 
   return (
-    <ul className="thumb">
-      {CHARACTERS.map((character, i) => (
-        <li key={i}>
-          <img src={`/miniatures/${character.slug}`} />
-        </li>
-      ))}
-    </ul>
-    <div style={{ width: "600px", display: "block"}} >
-      <Slider {...SETTINGS}>
+    <>
+      <ul className="thumb">
         {CHARACTERS.map((character, i) => (
-          <div className="" key={i} style={{ width: "100px", heigth: "100px" }}>
-            <img className={i == indexOption ? "grayscale-0" : "grayscale-[50%]"} src={`/miniatures/${character.slug}`} alt={character.name} onClick={() => handleOptionClick(i)} />
-          </div>
+          <li key={i}>
+            <img src={`/miniatures/${character.slug}`} />
+          </li>
         ))}
-      </Slider>
-    </div>
+      </ul>
+      <div style={{ width: "600px", display: "block" }}>
+        <Slider {...SETTINGS}>
+          {CHARACTERS.map((character, i) => (
+            <div
+              className=""
+              key={i}
+              style={{ width: "100px", heigth: "100px" }}
+            >
+              <img
+                className={i == indexOption ? "grayscale-0" : "grayscale-[50%]"}
+                src={`/miniatures/${character.slug}`}
+                alt={character.name}
+                onClick={() => handleOptionClick(i)}
+              />
+            </div>
+          ))}
+        </Slider>
+      </div>
+    </>
   );
 }
