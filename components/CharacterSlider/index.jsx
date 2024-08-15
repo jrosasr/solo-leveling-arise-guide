@@ -1,5 +1,4 @@
 "use client";
-// import CharacterSlider from "@/components/CharacterSlider/index.jsx";
 import { CHARACTERS } from "@/consts/characters";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -8,15 +7,42 @@ import { useState, useEffect } from "react";
 import CharacterMainImage from "@/components/CharacterSlider/CharacterMainImage";
 import CharacterDescription from "@/components/CharacterSlider/CharacterDescription";
 
-const SETTINGS = {
-  dots: true,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 7,
-  slidesToScroll: 5,
-};
 export default function CharacterSlider() {
   const [indexOption, setindexOption] = useState(0);
+  const [isSmallScreen, setIsSmallScreen] = useState(true);
+  const [settings, setSettings] = useState({
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 2,
+  });
+
+  useEffect(() => {
+    setIsSmallScreen(window.innerWidth <= 720);
+  }, []);
+
+  useEffect(() => {
+    if (isSmallScreen) {
+      setSettings({
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 2,
+      });
+    } else {
+      setSettings({
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 7,
+        slidesToScroll: 5,
+      });
+    }
+
+    return () => {};
+  }, [isSmallScreen]);
 
   useEffect(() => {
     const infoSlider = document.querySelectorAll(".info-slider");
@@ -62,8 +88,8 @@ export default function CharacterSlider() {
         </div>
       ))}
 
-      <div style={{ width: "600px", display: "block" }}>
-        <Slider {...SETTINGS}>
+      <div style={{ width: `${isSmallScreen ? "350px" : "600px"}`, display: "block" }}>
+        <Slider {...settings}>
           {CHARACTERS.map((character, i) => (
             <div
               className=""
