@@ -45,41 +45,47 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen max-w-7xl mx-auto p-24 bg-gray-900 relative">
-      <section className="flex min-h-screen flex-col items-center justify-between">
-        {CHARACTERS.map((character, i) => (
-          <div className="item" key={i}>
-            <div className="bg"></div>
-            <CharacterMainImage className="-mr-10" slugImage={character.slug} index={i} />
-            <CharacterDescription
-              title={character.name}
-              description={character.description}
-              index={i}
-            />
-          </div>
-        ))}
+    <>
+      <main className="min-h-screen max-w-7xl mx-auto p-24 bg-gray-900 relative">
+        <section className="flex min-h-screen flex-col items-center justify-between">
+          {CHARACTERS.map((character, i) => (
+            <div className="item" key={i}>
+              <div className="bg"></div>
+              <CharacterMainImage
+                className="-mr-10"
+                slugImage={character.slug}
+                index={i}
+              />
+              <CharacterDescription
+                title={character.name}
+                description={character.description}
+                index={i}
+              />
+            </div>
+          ))}
 
-        <div style={{ width: "600px", display: "block" }}>
-          <Slider {...SETTINGS}>
-            {CHARACTERS.map((character, i) => (
-              <div
-                className=""
-                key={i}
-                style={{ width: "100px", heigth: "100px" }}
-              >
-                <img
-                  className={
-                    i == indexOption ? "grayscale-0" : "grayscale-[50%]"
-                  }
-                  src={`/miniatures/${character.slug}`}
-                  alt={character.name}
-                  onClick={() => handleOptionClick(i)}
-                />
-              </div>
-            ))}
-          </Slider>
-        </div>
-      </section>
-    </main>
+          <div style={{ width: "600px", display: "block" }}>
+            <Slider {...SETTINGS}>
+              {CHARACTERS.map((character, i) => (
+                <div
+                  className=""
+                  key={i}
+                  style={{ width: "100px", heigth: "100px" }}
+                >
+                  <img
+                    className={
+                      i == indexOption ? "grayscale-0" : "grayscale-[50%]"
+                    }
+                    src={`/miniatures/${character.slug}`}
+                    alt={character.name}
+                    onClick={() => handleOptionClick(i)}
+                  />
+                </div>
+              ))}
+            </Slider>
+          </div>
+        </section>
+      </main>
+    </>
   );
 }
