@@ -79,11 +79,8 @@
 
 .item .img-box {
   position: absolute;
-  right: 10%;
   top: 50%;
   transform: translateY(-50%);
-  width: 800px;
-  height: 700px;
   display: flex;
   align-items: center;
   overflow: hidden;

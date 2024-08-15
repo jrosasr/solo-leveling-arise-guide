@@ -42,21 +42,21 @@ export default function CharacterSlider() {
   }
 
   return (
-    // <ul className="thumb">
-    //   {CHARACTERS.map((character, i) => (
-    //     <li key={i}>
-    //       <img src={`/miniatures/${character.slug}`} />
-    //     </li>
-    //   ))}
-    // </ul>
+    <ul className="thumb">
+      {CHARACTERS.map((character, i) => (
+        <li key={i}>
+          <img src={`/miniatures/${character.slug}`} />
+        </li>
+      ))}
+    </ul>
     <div style={{ width: "600px", display: "block"}} >
       <Slider {...SETTINGS}>
-      {CHARACTERS.map((character, i) => (
-        <div className="" key={i} style={{ width: "100px", heigth: "100px" }}>
-          <img className={i == indexOption ? "grayscale-0" : "grayscale-[50%]"} src={`/miniatures/${character.slug}`} alt={character.name} onClick={() => handleOptionClick(i)} />
-        </div>
-      ))}
-    </Slider>
+        {CHARACTERS.map((character, i) => (
+          <div className="" key={i} style={{ width: "100px", heigth: "100px" }}>
+            <img className={i == indexOption ? "grayscale-0" : "grayscale-[50%]"} src={`/miniatures/${character.slug}`} alt={character.name} onClick={() => handleOptionClick(i)} />
+          </div>
+        ))}
+      </Slider>
     </div>
   );
 }

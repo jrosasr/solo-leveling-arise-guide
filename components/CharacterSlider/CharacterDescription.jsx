@@ -7,9 +7,6 @@ export default function CharacterDescription({ title, description, index }) {
           <p>
             {description}
           </p>
-          <a className="btn" href="#">
-            Build
-          </a>
         </div>
       </div>
     </div>
