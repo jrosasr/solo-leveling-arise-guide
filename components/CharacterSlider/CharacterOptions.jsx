@@ -1,18 +1,46 @@
-import { CHARACTERS } from "../../consts/characters";
+"use client";
+import { CHARACTERS } from "@/consts/characters";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { useState, useEffect } from "react";
 
-const SETTINGS = {
-  dots: true,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 7,
-  slidesToScroll: 5,
-};
 export default function CharacterSlider() {
   const [indexOption, setindexOption] = useState(0);
+  const [isSmallScreen, setIsSmallScreen] = useState(true);
+  const [settings, setSettings] = useState({
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 2,
+  });
+
+  useEffect(() => {
+    setIsSmallScreen(window.innerWidth <= 720);
+  }, []);
+
+  useEffect(() => {
+    if (isSmallScreen) {
+      setSettings({
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 2,
+      });
+    } else {
+      setSettings({
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 7,
+        slidesToScroll: 5,
+      });
+    }
+
+    return () => {};
+  }, [isSmallScreen]);
 
   useEffect(() => {
     const infoSlider = document.querySelectorAll(".info-slider");
@@ -28,12 +56,12 @@ export default function CharacterSlider() {
     });
 
     document.querySelector(".item.active")?.classList.remove("active");
-    items[indexOption].classList?.add("active");
+    items[indexOption]?.classList?.add("active");
 
-    // return () => {
-    //   document.querySelector(".item.active")?.classList?.remove("active");
-    //   items[0]?.classList.add("active");
-    // };
+    return () => {
+      document.querySelector(".item.active")?.classList?.remove("active");
+      items[0]?.classList.add("active");
+    };
   }, [indexOption]);
 
   function handleOptionClick(index) {
@@ -42,15 +70,13 @@ export default function CharacterSlider() {
 
   return (
     <>
-      <ul className="thumb">
-        {CHARACTERS.map((character, i) => (
-          <li key={i}>
-            <img src={`/miniatures/${character.slug}`} />
-          </li>
-        ))}
-      </ul>
-      <div style={{ width: "600px", display: "block" }}>
-        <Slider {...SETTINGS}>
+      <div
+        style={{
+          width: `${isSmallScreen ? "300px" : "600px"}`,
+          display: "block",
+        }}
+      >
+        <Slider {...settings}>
           {CHARACTERS.map((character, i) => (
             <div
               className=""
