@@ -88,7 +88,7 @@ export default function CharacterSlider() {
         </div>
       ))}
 
-      <div style={{ width: `${isSmallScreen ? "350px" : "600px"}`, display: "block" }}>
+      <div style={{ width: `${isSmallScreen ? "300px" : "600px"}`, display: "block" }}>
         <Slider {...settings}>
           {CHARACTERS.map((character, i) => (
             <div
