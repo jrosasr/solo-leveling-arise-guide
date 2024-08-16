@@ -1,5 +1,15 @@
 export const CHARACTERS = [
   {
+    name: "Sung Jinwoo",
+    slug: "sung-jinwoo",
+    element: "darkness.webp",
+    rare: 'SSR',    
+    miniature: "sung-jinwoo.webp",
+    class: 'assassin',
+    tierlist: 'SS',
+    description: 'Un cazador especial que tiene la habilidad de "subir de nivel". Solía ser un cazador de rango E apodado "el cazador más débil". Tras el incidente de la mazmorra doble, ha obtenido acceso a un "sistema" que lo ayuda a subir de nivel. A base de entrenar sin cesar, ha adquirido un poder especial que convierte a los muertos en sus "soldados sombra".',
+  },
+  {
     name: "Alicia Blanche",
     slug: 'alicia-blanche',
     element: "water.webp",
